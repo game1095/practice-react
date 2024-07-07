@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import Header from "./components/Header";
 import StudentList from "./components/StudentList";
+import Addform from "./components/AddForm"; 
 
 function App() {
   // สร้าง state count
@@ -18,12 +19,20 @@ function App() {
     setCount(count - 1);
   }
 
+  // สร้าง state Students
+  const [students, setStudent] = useState([]);
+
+  function deleteStudent(id) {
+    setStudent(students.filter((data) => data.id !== id));
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <Header />
+        <Header title="Home" />
         <main>
-          <StudentList />
+          <Addform students={students} setStudent={setStudent}/>
+          <StudentList students={students} deleteStudent={deleteStudent} />
         </main>
         <img src={logo} className="App-logo" alt="logo" />
         <p>{count}</p>

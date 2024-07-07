@@ -1,10 +1,10 @@
 import Logo from "../image/logo.png";
-
-function Header() {
+import "./Header.css"
+function Header(props) {
   return (
     <nav>
-      <img src={Logo} alt="logo" />
-      <a href="/">Home</a>
+      <img src={Logo} alt="logo" className="logo" />
+      <a href="/">{props.title}</a>
     </nav>
   );
 }
